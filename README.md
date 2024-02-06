@@ -2,15 +2,19 @@
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/DmitroPodolsky/test_proj.git
+   git clone https://github.com/Olderestin/web_project_auction.git
 
 2. Navigate to the project directory:
    ```bash
-   cd test_proj
+   cd web_project_auction
 
 3. Change branch:
    ```bash
-   git checkout backend_dev
+   git checkout feature/backend_api
+
+3. Create a .env file based on the provided example (don't forget to fill it):
+   ```bash
+   cp .env.example .env
 
 4. Build and run app with Docker container:
    ```bash
