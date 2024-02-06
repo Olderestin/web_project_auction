@@ -16,6 +16,10 @@
    ```bash
    cp .env.example .env
 
+3. Create a .env file based on the provided example (don't forget to fill it):
+   ```bash
+   cp .env.example .env
+
 4. Build and run app with Docker container:
    ```bash
    docker compose up --build
