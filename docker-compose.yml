@@ -16,7 +16,6 @@ services:
       dockerfile: Dockerfile
       context: .
     container_name: django
-    command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     depends_on:
       - postgres
     ports:
@@ -25,3 +24,5 @@ services:
       - .env
     volumes:
       - ./media:/app/media
+    environment:
+      WAIT_HOSTS: postgres:5432
