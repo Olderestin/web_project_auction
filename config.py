@@ -1,11 +1,16 @@
 from pydantic_settings import BaseSettings
 
+
 class Settings(BaseSettings):
     """
     Class for storing app settings.
     """
 
     SECRET_KEY: str
+
+    ALLOWED_HOSTS_1: str
+    ALLOWED_ORIGINS_1: str
+    ALLOWED_ORIGINS_2: str
 
     POSTGRES_HOST: str
     POSTGRES_PORT: str
@@ -20,5 +25,6 @@ class Settings(BaseSettings):
 
         env_file = ".env"
         case_sensitive = True
+
 
 settings = Settings()
