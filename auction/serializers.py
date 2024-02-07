@@ -6,7 +6,7 @@ from django.utils import timezone
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['username']
+        fields = ['username', 'user_image']
 
 class BidSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
@@ -78,4 +78,4 @@ class UserProfileSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = User
-        fields = ['id', 'username', 'first_name', 'last_name', 'email', 'auction_set']
+        fields = ['id', 'username', 'user_image', 'first_name', 'last_name', 'email', 'auction_set']

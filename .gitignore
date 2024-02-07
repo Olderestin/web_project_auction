@@ -9,3 +9,4 @@ venv
 data/
 .env
 media/post_images/
+media/user_images/
