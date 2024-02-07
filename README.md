@@ -1,4 +1,11 @@
-# Usage
+## Prerequisites
+
+- **Required**: Python 3.x, Docker
+- **For pip method**: pip
+- **For poetry method**: poetry
+- **For Docker method**: only Docker
+___
+## Installation & Usage
 
 1. Clone the repository:
    ```bash
@@ -15,10 +22,45 @@
 3. Create a .env file based on the provided example (don't forget to fill it):
    ```bash
    cp .env.example .env
+___
+## Method 1: Using pip
 
-3. Create a .env file based on the provided example (don't forget to fill it):
+1. Install dependencies:
+    ```bash
+    pip install -r requirements.txt
+
+2. Up the database with docker:
    ```bash
-   cp .env.example .env
+   docker compose -f docker-compose-local.yml up --build -d
+
+3. Make migrations:
+    ```bash
+    python manage.py migrate
+
+4.  Run the app:
+    ```bash
+    python manage.py runserver
+___
+## Method 2: Using Poetry
+
+1. Install dependencies:
+    ```bash
+    poetry install
+
+2. Up the database with docker:
+   ```bash
+   docker compose -f docker-compose-local.yml up --build -d
+
+3. Make migrations:
+    ```bash
+    python manage.py migrate
+
+4.  Run the app:
+    ```bash
+    python manage.py runserver
+
+___
+## Method 3: Using Docker
 
 4. Build and run app with Docker container:
    ```bash
