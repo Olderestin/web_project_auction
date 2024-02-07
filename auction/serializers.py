@@ -1,3 +1,4 @@
+from typing import Any, Dict
 from django.utils import timezone
 from rest_framework import serializers
 
@@ -8,19 +9,28 @@ from user.models import User
 
 
 class UserSerializer(serializers.ModelSerializer):
+    """
+    Serializer for User model.
+    """
     class Meta:
         model = User
         fields = ["username", "user_image"]
 
 
 class BidSerializer(serializers.ModelSerializer):
+    """
+    Serializer for Bid model.
+    """
     user = UserSerializer(read_only=True)
 
     class Meta:
         model = Bid
         fields = "__all__"
 
-    def create(self, validate_data):
+    def create(self, validate_data: Dict[str, Any]) -> Bid:
+        """
+        Method to create a new bid.
+        """
         user = self.context["request"].user
         auction = validate_data["auction"]
         bid_value = validate_data["bid"]
@@ -41,7 +51,7 @@ class BidSerializer(serializers.ModelSerializer):
 
         return bid
 
-    def create_bid(self, user, validate_data, auction):
+    def create_bid(self, user, validate_data: Dict[str, Any], auction: Auction) -> Bid:
         bid = Bid.objects.create(user=user, **validate_data)
         auction.bid = bid.bid
         auction.save()
@@ -49,11 +59,17 @@ class BidSerializer(serializers.ModelSerializer):
 
 
 class AuctionImageSerializer(serializers.ModelSerializer):
+    """
+    Serializer for AuctionImage model.
+    """
     class Meta:
         model = AuctionImage
         fields = "__all__"
 
-    def validate(self, attrs):
+    def validate(self, attrs: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Validate method to check maximum number of auction images and ownership.
+        """
         super().validate(attrs)
 
         auction = attrs.get("auction")
@@ -70,6 +86,9 @@ class AuctionImageSerializer(serializers.ModelSerializer):
 
 
 class AuctionSerializer(serializers.ModelSerializer):
+    """
+    Serializer for Auction model.
+    """
     owner = UserSerializer(read_only=True)
     images = AuctionImageSerializer(many=True, read_only=True)
     bids = BidSerializer(many=True, read_only=True)
@@ -91,7 +110,10 @@ class AuctionSerializer(serializers.ModelSerializer):
             "bid_step",
         ]
 
-    def create(self, validate_data):
+    def create(self, validate_data: Dict[str, Any]) -> Auction:
+        """
+        Method to create a new auction.
+        """
         owner = self.context["request"].user
 
         auction = Auction.objects.create(
@@ -101,6 +123,9 @@ class AuctionSerializer(serializers.ModelSerializer):
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
+    """
+    Serializer for UserProfile model.
+    """
     auction_set = AuctionSerializer(many=True, read_only=True)
     username = serializers.CharField(read_only=True)
     email = serializers.EmailField(required=False)

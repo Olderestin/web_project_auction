@@ -14,19 +14,29 @@ class Auction(models.Model):
     start_bid = models.IntegerField()
     bid_step = models.IntegerField()
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """
+        Returns a string representation of the auction object.
+        """
         return self.title
 
     def delete_related_images(self):
+        """
+        Deletes the related images of the auction.
+        """
         for auction_image in self.images.all():
             auction_image.delete()
 
     def delete(self, *args, **kwargs):
+        """
+        Overridden delete method.
+        Deletes the auction object and all its related images.
+        """
         self.delete_related_images()
         super().delete(*args, **kwargs)
 
 
-def generate_image_filename(instance, filename):
+def generate_image_filename(instance: "AuctionImage", filename: str) -> str:
     username = instance.auction.owner.username
     date_string = timezone.now().strftime("%Y.%m.%d.%H.%M.%S")
     unique_id = str(uuid.uuid4())
@@ -41,6 +51,10 @@ class AuctionImage(models.Model):
     image = models.ImageField(upload_to=generate_image_filename)
 
     def delete(self, *args, **kwargs):
+        """
+        Overridden delete method.
+        Deletes the auction image and its file.
+        """
         self.image.delete()
         super().delete(*args, **kwargs)
 
@@ -52,5 +66,8 @@ class Bid(models.Model):
     )
     bid = models.IntegerField()
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """
+        Returns a string representation of the bid object.
+        """
         return "{} - {}".format(self.auction.title, self.user)

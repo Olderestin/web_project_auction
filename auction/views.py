@@ -1,3 +1,5 @@
+from typing import Iterable
+
 from django.shortcuts import get_object_or_404
 from rest_framework import mixins
 from rest_framework import parsers
@@ -18,12 +20,18 @@ from user.models import User
 
 
 class AuctionViewSet(viewsets.ModelViewSet):
+    """
+    A ViewSet for viewing and editing auctions.
+    """
     queryset = Auction.objects.all()
     serializer_class = AuctionSerializer
 
     parser_classes = (parsers.MultiPartParser, parsers.FormParser)
 
-    def get_permissions(self):
+    def get_permissions(self) -> Iterable[permissions.BasePermission]:
+        """
+        Instantiates and returns the list of permissions that this view requires.
+        """
         if self.action == "list" or self.action == "retrieve":
             permission_classes = [permissions.AllowAny]
         else:
@@ -34,6 +42,9 @@ class AuctionViewSet(viewsets.ModelViewSet):
 class AuctionImageViewSet(
     mixins.CreateModelMixin, mixins.DestroyModelMixin, viewsets.GenericViewSet
 ):
+    """
+    A ViewSet for creating and deleting auction images.
+    """
     queryset = AuctionImage.objects.all()
     serializer_class = AuctionImageSerializer
     parser_classes = (
@@ -49,6 +60,9 @@ class AuctionImageViewSet(
 
 
 class BidViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
+    """
+    A ViewSet for creating bids.
+    """
     queryset = Bid.objects.all()
     serializer_class = BidSerializer
     permission_classes = (permissions.IsAuthenticated,)
@@ -60,6 +74,9 @@ class ProfileViewSet(
     mixins.ListModelMixin,
     viewsets.GenericViewSet,
 ):
+    """
+    A ViewSet for viewing, updating, and listing user profiles.
+    """
     queryset = User.objects.all()
     serializer_class = UserProfileSerializer
 
@@ -73,14 +90,20 @@ class ProfileViewSet(
         parsers.FileUploadParser,
     )
 
-    def get_permissions(self):
+    def get_permissions(self) -> Iterable[permissions.BasePermission]:
+        """
+        Instantiates and returns the list of permissions that this view requires.
+        """
         if self.action == "retrieve" or self.action == "list":
             permission_classes = [permissions.AllowAny]
         else:
             permission_classes = [permissions.IsAuthenticated, ProfileIsOwner]
         return (permission() for permission in permission_classes)
 
-    def get_object(self):
+    def get_object(self) -> User:
+        """
+        Retrieve and return the requested user profile.
+        """
         queryset = self.get_queryset()
 
         lookup_value = self.kwargs[self.lookup_field]

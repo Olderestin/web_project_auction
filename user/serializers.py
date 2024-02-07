@@ -1,3 +1,4 @@
+from typing import Any, Dict
 from django.contrib.auth import authenticate
 from rest_framework import serializers
 from rest_framework.exceptions import AuthenticationFailed
@@ -8,10 +9,16 @@ from user.models import User
 
 
 class RegisterSerializer(serializers.ModelSerializer):
+    """
+    Serializer for user registration.
+    """
     password = serializers.CharField(max_length=68, min_length=6, write_only=True)
     tokens = serializers.SerializerMethodField()
 
-    def get_tokens(self, obj):
+    def get_tokens(self, obj: User) -> Dict[str, str]:
+        """
+        Method to get tokens for the newly registered user.
+        """
         refresh = RefreshToken.for_user(obj)
         return {"refresh": str(refresh), "access": str(refresh.access_token)}
 
@@ -27,14 +34,20 @@ class RegisterSerializer(serializers.ModelSerializer):
             "last_name": {"required": False},
         }
 
-    def validate(self, attrs):
+    def validate(self, attrs: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Method to validate the username field.
+        """
         username = attrs.get("username", "")
 
         if not username.isalnum():
             raise serializers.ValidationError(self.default_error_messages)
         return attrs
 
-    def create(self, validated_data):
+    def create(self, validated_data: Dict[str, Any]) -> User:
+        """
+        Method to create a new user.
+        """
         user = User.objects.create(**validated_data)
         user.set_password(validated_data["password"])
         user.is_active = True
@@ -43,12 +56,18 @@ class RegisterSerializer(serializers.ModelSerializer):
 
 
 class LoginSerializer(serializers.ModelSerializer):
+    """
+    Serializer for user login.
+    """
     password = serializers.CharField(max_length=68, min_length=6, write_only=True)
     username = serializers.CharField(max_length=255)
 
     tokens = serializers.SerializerMethodField()
 
-    def get_tokens(self, obj):
+    def get_tokens(self, obj: Dict[str, Any]) -> Dict[str, str]:
+        """
+        Method to get tokens for the user upon login.
+        """
         user = User.objects.get(username=obj["username"])
         refresh = RefreshToken.for_user(user)
         return {"refresh": str(refresh), "access": str(refresh.access_token)}
@@ -57,7 +76,10 @@ class LoginSerializer(serializers.ModelSerializer):
         model = User
         fields = ["username", "password", "tokens"]
 
-    def validate(self, attrs):
+    def validate(self, attrs: Dict[str, Any]) -> Dict[str, str]:
+        """
+        Method to validate user credentials upon login.
+        """
         username = attrs.get("username", "")
         password = attrs.get("password", "")
         user = authenticate(username=username, password=password)
@@ -69,22 +91,26 @@ class LoginSerializer(serializers.ModelSerializer):
 
 
 class LogoutSerializer(serializers.Serializer):
+    """
+    Serializer for user logout.
+    """
     refresh = serializers.CharField()
 
     default_error_messages = {"bad_token": "Token is expired or invalid"}
 
-    def validate(self, attrs):
+    def validate(self, attrs: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Method to validate the refresh token during logout.
+        """
         self.token = attrs["refresh"]
         return attrs
 
-    def save(self, **kwargs):
+    def save(self, **kwargs: Dict[str, Any])  -> None:
+        """
+        Method to blacklist the refresh token upon logout.
+        """
         try:
             RefreshToken(self.token).blacklist()
         except TokenError:
             self.fail("bad_token")
 
-
-# class UserProfileSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = User
-#         fields = ['id', 'username', 'first_name', 'last_name']
