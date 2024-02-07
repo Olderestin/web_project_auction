@@ -17,12 +17,25 @@ class BidSerializer(serializers.ModelSerializer):
 
     def create(self, validate_data):
         user = self.context['request'].user
-        bid = Bid.objects.create(user=user, **validate_data)
-
         auction = validate_data['auction']
+        bid_value = validate_data['bid']
+
+        if not auction.bid:
+            if auction.start_bid <= bid_value :
+                bid = self.create_bid(user, validate_data, auction)
+            else:
+                raise serializers.ValidationError("Bid value must be at least equal to the start bid.")
+        elif (auction.bid + auction.bid_step) <= bid_value:
+            bid = self.create_bid(user, validate_data, auction)
+        else:
+            raise serializers.ValidationError("Bid value must be higher than the current bid plus the bid step.")
+
+        return bid
+    
+    def create_bid(self, user, validate_data, auction):
+        bid = Bid.objects.create(user=user, **validate_data)
         auction.bid = bid.bid
         auction.save()
-
         return bid
 
 class AuctionImageSerializer(serializers.ModelSerializer):
