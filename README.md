@@ -15,10 +15,6 @@ ___
    ```bash
    cd web_project_auction
 
-3. Change branch:
-   ```bash
-   git checkout feature/backend_api
-
 3. Create a .env file based on the provided example (don't forget to fill it):
    ```bash
    cp .env.example .env
