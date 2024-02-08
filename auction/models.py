@@ -1,3 +1,4 @@
+import pathlib
 import uuid
 
 from django.conf import settings
@@ -40,7 +41,8 @@ def generate_image_filename(instance: "AuctionImage", filename: str) -> str:
     username = instance.auction.owner.username
     date_string = timezone.now().strftime("%Y.%m.%d.%H.%M.%S")
     unique_id = str(uuid.uuid4())
-    new_filename = f"post_images/{date_string}_{username}_{unique_id}.jpg"
+    extension = pathlib.Path(filename).suffix
+    new_filename = f"post_images/{date_string}_{username}_{unique_id}{extension}"
     return new_filename
 
 

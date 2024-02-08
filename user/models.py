@@ -1,13 +1,21 @@
+import pathlib
 from typing import Any
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
+from django.utils import timezone
 
+def generate_image_filename(instance: "User", filename: str) -> str:
+    username = instance.username
+    date_string = timezone.now().strftime("%Y.%m.%d.%H.%M.%S")
+    extension = pathlib.Path(filename).suffix
+    new_filename = f"user_images/{date_string}_{username}{extension}"
+    return new_filename
 
 class User(AbstractUser):
     user_image = models.ImageField(
-        default="default/no_image.jpg", upload_to="user_images/"
+        default="default/no_image.jpg", upload_to=generate_image_filename
     )
 
     def __str__(self) -> str:
