@@ -8,9 +8,8 @@ class Settings(BaseSettings):
 
     SECRET_KEY: str
 
-    ALLOWED_HOSTS_1: str
-    ALLOWED_ORIGINS_1: str
-    ALLOWED_ORIGINS_2: str
+    ALLOWED_HOSTS: str
+    ALLOWED_ORIGINS: str
 
     POSTGRES_HOST: str
     POSTGRES_PORT: str

@@ -25,17 +25,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = settings.SECRET_KEY
 
-ALLOWED_HOSTS = [settings.ALLOWED_HOSTS_1]
+ALLOWED_HOSTS = settings.ALLOWED_HOSTS.split(", ")
 
-CORS_ALLOWED_ORIGINS = [
-    settings.ALLOWED_ORIGINS_1,
-    settings.ALLOWED_ORIGINS_2,
-]
+CORS_ALLOWED_ORIGINS = settings.ALLOWED_ORIGINS.split(", ")
 
-CSRF_TRUSTED_ORIGINS = [
-    settings.ALLOWED_ORIGINS_1,
-    settings.ALLOWED_ORIGINS_2,
-]
+CSRF_TRUSTED_ORIGINS = settings.ALLOWED_ORIGINS.split(", ")
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 

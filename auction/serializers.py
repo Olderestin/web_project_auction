@@ -27,6 +27,20 @@ class BidSerializer(serializers.ModelSerializer):
         model = Bid
         fields = "__all__"
 
+    def create_bid(self, user, validate_data: Dict[str, Any], auction: Auction) -> Bid:
+        """
+        Create a new bid on the auction and save it to the database.
+
+        Args:
+            user: The user placing the bid.
+            validate_data: Validated data for creating the bid.
+            auction: The auction on which the bid is placed.
+        """
+        bid = Bid.objects.create(user=user, **validate_data)
+        auction.bid = bid.bid
+        auction.save()
+        return bid
+
     def create(self, validate_data: Dict[str, Any]) -> Bid:
         """
         Method to create a new bid.
@@ -51,11 +65,6 @@ class BidSerializer(serializers.ModelSerializer):
 
         return bid
 
-    def create_bid(self, user, validate_data: Dict[str, Any], auction: Auction) -> Bid:
-        bid = Bid.objects.create(user=user, **validate_data)
-        auction.bid = bid.bid
-        auction.save()
-        return bid
 
 
 class AuctionImageSerializer(serializers.ModelSerializer):
