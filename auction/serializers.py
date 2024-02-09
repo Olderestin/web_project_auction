@@ -138,6 +138,11 @@ class UserProfileSerializer(serializers.ModelSerializer):
     auction_set = AuctionSerializer(many=True, read_only=True)
     username = serializers.CharField(read_only=True)
     email = serializers.EmailField(required=False)
+    participating_auctions = serializers.SerializerMethodField()
+
+    def get_participating_auctions(self, obj):
+        auctions_participated = Auction.objects.filter(bids__user=obj).distinct()
+        return AuctionSerializer(auctions_participated, many=True).data
 
     class Meta:
         model = User
@@ -149,4 +154,5 @@ class UserProfileSerializer(serializers.ModelSerializer):
             "last_name",
             "email",
             "auction_set",
+            "participating_auctions",
         ]
