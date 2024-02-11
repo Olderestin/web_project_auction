@@ -1,0 +1,42 @@
+.remember-forgot-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.remember-container, .forgot-container {
+    font-family: 'Work Sans';
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.forgot-container {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.remember-container {
+    display: flex;
+    gap: 7px;
+}
+
+.not-have-account-texts {
+    margin-top: 10px;
+    display: flex;
+    gap: 5px;
+    margin-top: 80px;
+    color: #ffffff;
+}
+
+.not-have-account-text1, .not-have-account-text2 {
+    font-size: 24px;
+}
+
+.not-have-account-text2 {
+    font-weight: 700;
+    cursor: pointer;
+}
+

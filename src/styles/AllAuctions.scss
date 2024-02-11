@@ -1,0 +1,73 @@
+.all-main-block {
+    background-color: #1C3633;
+    display: flex;
+    justify-content: center;
+}
+
+.all-main-nav {
+    width: 100%;
+    position: absolute;
+    top: 31px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px;
+}
+
+.all-nav-btns {
+    display: flex;
+    gap: 52px;
+}
+
+.auctions-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 10px 40px;
+    margin: 100px auto;
+    max-width: 1200px;
+}
+
+.auction-card {
+    background-color: #5c6a50;
+    border-radius: 12px;
+    padding: 10px 10px;
+    width: 350px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.all-auction-text {
+    padding: 0 15px;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.auction-title, .auction-desc, .auction-start-bid, .auction-bid-owner, .auction-owner {
+    font-family: 'Inter', sans-serif;
+}
+
+.auction-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.bet-btn {
+    width: 50%;
+    margin: 20px auto;
+    padding: 10px;
+    width: 200px;
+    border: none;
+    background-color: #1C3633;
+    color: #ffffff;
+    border-radius: 20px;
+    font-size: 20px;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+}
+
+.bet-btn:hover {
+    background-color: #152826;
+}

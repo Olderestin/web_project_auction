@@ -1,0 +1,35 @@
+.images-block {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 40px;
+    gap: 15px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.image-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    button {
+        width: 90%;
+        background-color: #9D0707;
+        border: none;
+        color: white;
+        padding: 5px 0;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #C30909;
+    }
+}
+
+.add-new-images-text {
+    margin-top: 20px;
+    font-family: 'Karma', sans-serif;
+    font-size: 25px;
+    color: #ffffff;
+}
