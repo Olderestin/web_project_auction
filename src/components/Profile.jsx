@@ -37,7 +37,6 @@ function Profile({ userData, setUserData, setOnPage, setCurrentAuction, setCalle
                         }}>All lots</button>
                 </div>
                 <div className="profile-btns">
-                {/* <button className='profile-btn' type='button' onClick={() => {setOnPage('signUp')}}>Register</button> / <button className='profile-btn' type='button' onClick={() => {setOnPage('signIn')}}>Login</button> */}
                 <button className="logout-btn" type="button" onClick={() => {
                     setUserData({});
                     logout_btn();
@@ -74,7 +73,7 @@ function Profile({ userData, setUserData, setOnPage, setCurrentAuction, setCalle
                                     setOnPage('editAuction');
                                 }}>Edit</button>
                                 <button className="lot-btn" type="button" onClick={() => {
-                                    delete_auction(userData.tokens.access, auction.id);
+                                    delete_auction(userData, setUserData, auction.id);
                                     setDeleted(true);
                                 }}>Delete</button>
                             </div>

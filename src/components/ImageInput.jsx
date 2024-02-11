@@ -8,7 +8,6 @@ function ImageInput({ auctionImages, setAuctionImages }) {
     const handleImageChange = (e) => {
         setAuctionImages((prevImages) => {
             const updatedImages = prevImages.concat(...e.target.files);
-            console.log('Updated Auction Images:', updatedImages);
             return updatedImages;
         });
 
@@ -24,19 +23,35 @@ function ImageInput({ auctionImages, setAuctionImages }) {
         }
       };
     
-      const renderPhotos = (source) => {
-        return source.map((photo) => {
-          return <img src={photo} alt="" key={photo} />;
-        });
-      };
-
     return (
         <>
         <label className="custom-file-upload">
           <input type="file" id="file" multiple accept="image/png, image/jpeg, image/jpg" onChange={handleImageChange} />
           <i></i> Upload photos
         </label> 
-            <div className="result">{renderPhotos(selectedFiles)}</div>
+            <div className="result">{
+              selectedFiles.map((photo, index) => {
+                return (
+                <>
+                <div className="img-and-delete-container">
+                  <img src={photo} alt="" key={photo} />
+                  <button type='button' onClick={() => {
+                    setSelectedFiles((prevImages) => {
+                      const updatedFiles = [...prevImages];
+                      updatedFiles.splice(index, 1);
+                      return updatedFiles;
+                    });
+                    setAuctionImages((prevImages) => {
+                      const updatedFiles = [...prevImages];
+                      updatedFiles.splice(index, 1);
+                      return updatedFiles;
+                    });
+                  }}>Delete</button>
+                </div>
+                </>
+                );
+              })
+            }</div>
         </>
       );
 }

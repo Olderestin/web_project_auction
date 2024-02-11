@@ -1,6 +1,4 @@
-// const AUTH_BASE_URL = 'http://127.0.0.1:8000/api/auth';
-
-const AUTH_BASE_URL = 'https://auctions-back-86d979548c3b.herokuapp.com/api/auth'
+const AUTH_BASE_URL = import.meta.env.VITE_AUTH_BASE_URL;
 
 async function register(body) {
     const apiUrl = AUTH_BASE_URL + '/register/';

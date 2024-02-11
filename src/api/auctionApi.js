@@ -1,8 +1,6 @@
 import { refresh_token } from "./authApi";
 
-// const AUCTION_BASE_URL = 'http://127.0.0.1:8000/api/auction';
-
-const AUCTION_BASE_URL = 'https://auctions-back-86d979548c3b.herokuapp.com/api/auction'
+const AUCTION_BASE_URL = import.meta.env.VITE_AUCTION_BASE_URL;
 
 function objectToFormData(obj) {
     const formData = new FormData();
