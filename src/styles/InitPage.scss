@@ -1,0 +1,188 @@
+.main-block {
+    background-color: #1C3633;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.main-nav {
+    width: 100%;
+    position: absolute;
+    top: 31px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px;
+}
+
+.nav-btns {
+    display: flex;
+    gap: 52px;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.profile-btns {
+    color: white;
+    font-size: 24px;
+}
+
+.profile-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.main-hero {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-header {
+    font-size: 128px;
+    font-weight: 700;
+    color: #ffffff;
+    font-family: 'Karma', sans-serif;
+}
+
+.hero-text {
+    font-size: 24px;
+    color: #ffffff;
+    margin-top: -20px;
+    font-family: 'Inter', sans-serif;
+    width: 80%;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.hero-btn {
+    background-color: #5c6a50;
+    border: none;
+    border-radius: 20px;
+    padding: 14px 64px;
+    color: #ffffff;
+    font-size: 24px;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+}
+
+.hero-btn:hover {
+    background-color: #515D46;
+}
+
+.main-about {
+    height: 100vh;
+    padding: 30px 102px;
+    background-color: #ffffff;
+}
+
+.about-header {
+    font-family: 'Karma', sans-serif;
+    font-size: 64px;
+    margin-bottom: 40px;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    font-weight: 400;
+    gap: 52px;
+}
+
+.content-img-container {
+    padding: 10px;
+    background-color: #5c6a50;
+    border-radius: 20px;
+    height: 80%;
+}
+
+.content-img {
+    height: 100%;
+    width: 100%;
+}
+
+.content-desc {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+    &-header {
+        font-size: 40px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    &-text {
+        font-size: 24px;
+        font-family: 'Inter', sans-serif;
+    }
+}
+
+.active-lots-block {
+    height: 100vh;
+    width: 100%;
+    background-color: #1C3633;
+    padding: 30px 102px;
+}
+
+.active-lots-header {
+    color: #ffffff;
+    font-family: 'Karma', sans-serif;
+    font-size: 48px;
+    margin-bottom: 25px;
+}
+
+.lots-container {
+    display: flex;
+    gap: 5%;
+    justify-content: center;
+}
+
+.lot {
+    background-color: #5c6a50;
+    padding: 20px 25px;
+    color: #ffffff;
+    border-radius: 20px;
+
+    img {
+        width: 300px;
+        height: 400px;
+        border-radius: 20px;
+        cursor: pointer;
+
+    }
+}
+
+.lot-text {
+    padding: 5px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.lot-header {
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.lot-highest-bid-container, .lot-owner-container {
+    display: flex;
+    justify-content: space-between;
+}

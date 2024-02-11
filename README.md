@@ -1,1 +1,3 @@
-# web_project_auction
+Frontend deployt for hackathon test task
+
+Link: 

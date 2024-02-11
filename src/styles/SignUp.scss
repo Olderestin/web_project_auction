@@ -1,0 +1,184 @@
+.back-btn {
+    position: absolute;
+    top: 30px;
+    left: 80px;
+    display: flex;
+    gap: 15px;
+    background-color: transparent;
+    border: none;
+    align-items: center;
+    cursor: pointer;
+}
+
+.back-icon {
+    width: 30px;
+    height: 30px;
+    color: #ffffff;
+}
+
+.back-text {
+    font-size: 30px;
+    color: #ffffff
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-block {
+    text-align: center;
+}
+
+.header {
+    font-size: 96px;
+    font-family: 'Karla', sans-serif;
+    font-weight: 400;
+    color: #ffffff;
+}
+
+.text {
+    font-size: 36px;
+    margin-bottom: 18px;
+    color: #ffffff;
+    font-family: 'Karma', sans-serif;
+}
+
+.inputs-block {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    input {
+        width: 490px;
+        height: 70px;
+        border-radius: 50px;
+        background-color: #5c6a50;
+        border: none;
+        padding: 0 43px;
+        color: #e8e7e7;
+        font-size: 24px;
+        opacity: 70%;
+    }
+
+    input::placeholder {
+        font-size: 24px;
+        color: #e8e7e7;
+        opacity: 30%;
+    }
+}
+
+.agree-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 24px;
+    color: #ffffff;
+
+    label {
+        font-family: 'Work Sans';
+        font-size: 20px;
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn {
+    margin-top: 20px;
+    width: 290px;
+    height: 85px;
+    border-radius: 50px;
+    border: none;
+    background-color: #5c6a50;
+    color: #ffffff;
+    font-size: 36px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    opacity: 60%;
+}
+
+.btn:active {
+    opacity: 90%;
+}
+
+.btn:disabled {
+    opacity: 30%;
+    cursor: not-allowed;
+    background-color: #666666;
+    color: #aaaaaa;
+}
+
+.password-container {
+    display: flex;
+    align-items: center;
+
+    input {
+        padding-right: 60px;
+    } 
+}
+
+.password-btn {
+    background: none;
+    border: none;
+    opacity: 70%;
+    margin-left: -50px;
+    cursor: pointer;
+}
+
+
+.password-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.line-block {
+    margin-top: 10px;
+    display: flex;
+    gap: 17px;
+    align-items: center;
+}
+
+.or-text {
+    font-size: 25px;
+    color: #ffffff;
+}
+
+.line {
+    width: 219px;
+    height: 0;
+    border: 1px solid white;
+}
+
+.or-icons {
+    display: flex;
+    gap: 17px;
+}
+
+.or-icon {
+    width: 30px;
+    height: 30px;
+    color: white;
+}
+
+.have-account-texts {
+    margin-top: 10px;
+    display: flex;
+    gap: 5px;
+    color: white
+}
+
+.have-account-text1, .have-account-text2 {
+    font-size: 24px;
+}
+
+.have-account-text2 {
+    font-weight: 700;
+    cursor: pointer;
+}

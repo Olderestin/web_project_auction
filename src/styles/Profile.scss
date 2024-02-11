@@ -1,0 +1,120 @@
+.hello-block {
+    text-align: center;
+}
+
+.hello-text  {
+    font-size: 96px;
+    font-weight: 400;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.logout-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+.logout-text {
+    font-size: 24px;
+}
+
+.profile-block {
+    margin-top: 100px;
+    color: white;
+}
+
+.profile-header {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px
+}
+
+.my-auctions-block {
+    margin-top: 50px;
+}
+
+.my-auctions-header, .my-participated-header {
+    font-size: 36px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.my-lots {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.my-lot, .my-participated {
+    display: flex;
+    background-color: #5c6a50;
+    height: 50px;
+    align-items: center;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: white;
+    font-weight: bold;
+    justify-content: space-between;
+    min-width: 400px;
+    gap: 40px;
+
+    p {
+        cursor: pointer;
+    }
+}
+
+.lot-btns {
+    display: flex;
+    gap: 20px;
+    height: 100%;
+}
+
+.lot-btn {
+    height: 100%;
+    width: 100px;
+    border-radius: 5px;
+    background-color: #1C3633;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.lot-btn:hover {
+    background-color: #2A504C;
+}
+
+.no-lots {
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.create-lot-btn {
+    margin-top: 20px;
+    background-color: #5c6a50;
+    border: none;
+    padding: 20px;
+    border-radius: 5px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 40px;
+}
+
+.create-lot-btn:hover {
+    background-color: #47513D;
+}
+
+.my-participateds {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

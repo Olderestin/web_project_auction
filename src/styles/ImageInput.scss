@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Alice&display=swap');
+
+.result {
+    // min-height: 100%;
+    // max-height: auto;
+    margin-right: 40px;
+    margin-top: 1rem ;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: left;
+    border-radius: 10px;
+}
+
+img {
+    width: 320px;
+    height: 180px;
+    object-fit: cover;
+    padding: 0.75rem;
+}
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    color: white;
+    border-radius: 5px;
+}

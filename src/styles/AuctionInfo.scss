@@ -1,0 +1,102 @@
+.info-block {
+    margin-top: 100px;
+    margin-left: 40px;
+}
+
+.auction-info-title {
+    font-size: 36px;
+    font-weight: bold;
+    font-family: 'Inter', sans-serif;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.auction-info-text {
+    color: white;
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 20px;
+}
+
+.highest-bid-text {
+    color: white;
+    font-size: 30px;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.aution-participants-text, .bids-history-text {
+    color: white;
+    font-size: 25px;
+    font-family: 'Inter', sans-serif;
+}
+
+.participants {
+    margin-top: 10px;
+    color: white;
+    font-size: 18px;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 30px;
+}
+
+.bids-history {
+    margin-top: 10px;
+    color: white;
+    font-size: 18px;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 30px;
+}
+
+.bid-container {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 300px;
+
+    input {
+        margin-bottom: 10px;
+        height: 50px;
+        background-color: #5c6a50;
+        opacity: 50%;
+        border: 4px solid #5c6a50;
+        border-radius: 20px;
+        padding: 20px;
+        color: white;
+    }
+
+    input::placeholder {
+        color: white;
+    }
+}
+
+.bid-btns {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.bid-btn {
+    background-color: #5c6a50;
+    padding: 10px 0;
+    border: none;
+    color: white;
+    border-radius: 20px;
+    font-size: 20px;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    width: 240px;
+}
+
+.bid-btn:hover {
+    background-color: #515D46;
+}
+
+.auction-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
