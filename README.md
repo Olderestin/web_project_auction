@@ -1,3 +1,9 @@
+# Backend side of auction web project
+
+## Project Overview
+
+This project is a backend application built using Django REST Framework (DRF) that provides CRUD functionality for auctions with multiple images, as well as allowing users to place bids on auctions. Authentication and authorization are implemented using JWT tokens.
+
 ## Prerequisites
 
 - **Required**: Python 3.x, Docker
