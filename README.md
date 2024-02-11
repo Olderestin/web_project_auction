@@ -4,6 +4,8 @@
 
 This project is a backend application built using Django REST Framework (DRF) that provides CRUD functionality for auctions with multiple images, as well as allowing users to place bids on auctions. Authentication and authorization are implemented using JWT tokens.
 
+deployed backend: [heroku](https://auctions-back-86d979548c3b.herokuapp.com/)
+
 ## Prerequisites
 
 - **Required**: Python 3.x, Docker
